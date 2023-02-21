@@ -16,6 +16,7 @@ import {
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
+import { useAccount } from 'wagmi'
 import './css/App.scss';
 
 export default function App() {
@@ -37,6 +38,8 @@ export default function App() {
         connectors,
         provider
     })
+
+    const { address } = useAccount();
 
     const [myPick, setMyPick] = useState("");
     const [housePick, setHousePick] = useState("");
@@ -60,7 +63,9 @@ export default function App() {
                 <Header score={gameScore}/>
                 <Switch className="main">
                     <Route path="/">
-                        <Home setPick={setMyPick} />
+                    {address ? <Home setPick={setMyPick} />
+                        :  <h1>Connect your wallet before start game!</h1>
+                    }
                     </Route>
                 </Switch>
                 <Footer />

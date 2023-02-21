@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
 import { useAccount } from 'wagmi'
 import {RPSGameABI, RPSGameAddress} from "../abi/RPSGame";
-import { Link } from "react-router-dom";
 import bgTriangle from '../images/bg-triangle.svg';
 import paperIcon from "../images/icon-paper.svg";
 import scissorsIcon from "../images/icon-scissors.svg";
