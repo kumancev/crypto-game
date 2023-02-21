@@ -7,8 +7,11 @@ import paperIcon from "../images/icon-paper.svg";
 import scissorsIcon from "../images/icon-scissors.svg";
 import rockIcon from "../images/icon-rock.svg";
 
+
 export default function Home() {
-    const [gameContract, setGameContract] = useState(null);
+  const provider = new ethers.providers.Web3Provider(window.ethereum);
+
+  const [gameContract, setGameContract] = useState(null);
   const [playerChoice, setPlayerChoice] = useState(null);
 
   const { address } = useAccount();
@@ -17,7 +20,6 @@ export default function Home() {
 
   useEffect(() => {
     const fetchGameResults = async () => {
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner();
       const game = new ethers.Contract(RPSGameAddress, RPSGameABI, signer);
 
@@ -35,7 +37,6 @@ export default function Home() {
   useEffect(() => {
     async function connectToContract() {
       try {
-        const provider = new ethers.providers.Web3Provider(window.ethereum);
         const signer = provider.getSigner();
         const game = new ethers.Contract(RPSGameAddress, RPSGameABI, signer);
         setGameContract(game);

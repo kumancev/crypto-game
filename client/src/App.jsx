@@ -41,7 +41,7 @@ export default function App() {
                 <div className="wrapper">
                     <Header />
                         {address 
-                            ? <Home  />
+                            ? <Home />
                             : <h2>Connect your wallet before start game!</h2>
                         }
                     <Footer />
