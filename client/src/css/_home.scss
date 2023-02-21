@@ -7,6 +7,10 @@
   position: relative;
   margin-top: 50px;
 
+  h2 {
+    margin-bottom: 2em;
+  }
+
   .triangle {
     position: absolute;
     transform: translateX(-150px) translateY(50px);
