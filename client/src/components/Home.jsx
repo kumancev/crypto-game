@@ -64,7 +64,7 @@ function Home(props) {
   }
     return (
         <div className="home">
-            <p>Price per game: 0.1 ETH</p>
+            <p>Price per game: 0.1 BNB</p>
               {gameResults.playerWon ? gameResults.playerWon ? "You won!" : "You lose!" : ""}
             <img className="triangle" src={bgTriangle}/>
                 <div data-id="paper" className="home__item home__paper" style={{backgroundImage: `url(${paperIcon})`}}>
