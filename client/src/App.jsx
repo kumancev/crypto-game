@@ -41,38 +41,19 @@ export default function App() {
 
     const { address } = useAccount();
 
-    const [myPick, setMyPick] = useState("");
-    const [housePick, setHousePick] = useState("");
-    const [gameScore, setGameScore] = useState(0);
-
-    function newHousePick() {
-        const choices = ["rock", "paper", "scissors"];
-        const randomChoice = choices[Math.floor((Math.random()*3))];
-        setHousePick(randomChoice);
-    }
-
-    useEffect(() => {
-        newHousePick();
-    },[setMyPick]);
-
     return (
-         <Router>
             <WagmiConfig client={wagmiClient}>
-            <RainbowKitProvider chains={chains}>
-                <div className="wrapper">
-                <Header score={gameScore}/>
-                <Switch className="main">
-                    <Route path="/">
-                    {address ? <Home setPick={setMyPick} />
-                        :  <h2>Connect your wallet before start game!</h2>
-                    }
-                    </Route>
-                </Switch>
-                <Footer />
-                </div>
-            </RainbowKitProvider>
+                <RainbowKitProvider chains={chains}>
+                    <div className="wrapper">
+                        <Header />
+                            {address 
+                                ? <Home  />
+                                : <h2>Connect your wallet before start game!</h2>
+                            }
+                        <Footer />
+                    </div>
+                </RainbowKitProvider>
             </WagmiConfig>
-        </Router>
     )
 }
 

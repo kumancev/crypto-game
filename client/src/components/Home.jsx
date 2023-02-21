@@ -7,9 +7,8 @@ import paperIcon from "../images/icon-paper.svg";
 import scissorsIcon from "../images/icon-scissors.svg";
 import rockIcon from "../images/icon-rock.svg";
 
-function Home(props) {
+function Home() {
     const [gameContract, setGameContract] = useState(null);
-  const [gameResult, setGameResult] = useState(null);
   const [playerChoice, setPlayerChoice] = useState(null);
 
   const { address } = useAccount();
