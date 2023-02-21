@@ -64,7 +64,7 @@ export default function App() {
                 <Switch className="main">
                     <Route path="/">
                     {address ? <Home setPick={setMyPick} />
-                        :  <h1>Connect your wallet before start game!</h1>
+                        :  <h2>Connect your wallet before start game!</h2>
                     }
                     </Route>
                 </Switch>

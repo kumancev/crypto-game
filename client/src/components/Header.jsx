@@ -1,8 +1,7 @@
 import React from "react";
 import { ConnectButton } from '@rainbow-me/rainbowkit';
-import Scorebox from "./Scorebox";
 
-function Header(props) {
+function Header() {
     return (
         <div>
             <div className="header__connect">
@@ -10,11 +9,8 @@ function Header(props) {
             </div>
             <header>
                 <h1 className="header__title">
-                    <span>Rock</span>
-                    <span>Paper</span>
-                    <span>Scissors</span>
+                    Rock Paper Scissors
                 </h1>
-                {/* <Scorebox score={props.score}/> */}
             </header>
         </div>
     )
