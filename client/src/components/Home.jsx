@@ -68,13 +68,14 @@ function Home(props) {
               {gameResults.playerWon ? gameResults.playerWon ? "You won!" : "You lose!" : ""}
             <img className="triangle" src={bgTriangle}/>
                 <div data-id="paper" className="home__item home__paper" style={{backgroundImage: `url(${paperIcon})`}}>
-                    <button onClick={() => playGame(1)}>Paper</button>
+                    <button className="play__btn" onClick={() => playGame(1)}>
+                    </button>
                 </div>
                 <div data-id="scissors" className="home__item home__scissors" style={{backgroundImage: `url(${scissorsIcon})`}}>
-                    <button onClick={() => playGame(2)}>Scissors</button>
+                    <button className="play__btn"  onClick={() => playGame(2)}>Scissors</button>
                 </div>
                 <div data-id="rock" className="home__item home__rock" style={{backgroundImage: `url(${rockIcon})`}}>
-                    <button onClick={() => playGame(0)}>Rock</button>
+                    <button className="play__btn"  onClick={() => playGame(0)}>Rock</button>
                 </div>
         </div>
     )
