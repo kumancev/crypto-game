@@ -1,4 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import '@rainbow-me/rainbowkit/styles.css';
+import {
+  getDefaultWallets,
+  RainbowKitProvider,
+} from '@rainbow-me/rainbowkit';
+import { configureChains, createClient, WagmiConfig } from 'wagmi';
+import { bsc, bscTestnet } from 'wagmi/chains';
+import { alchemyProvider } from 'wagmi/providers/alchemy';
+import { publicProvider } from 'wagmi/providers/public';
 import {
     BrowserRouter as Router,
     Switch,
@@ -6,11 +15,28 @@ import {
   } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./components/Home";
-import Play from "./components/Play";
 import Footer from "./components/Footer";
 import './css/App.scss';
 
 export default function App() {
+    const { chains, provider } = configureChains(
+        [bsc, bscTestnet],
+        [
+            alchemyProvider({ apiKey: import.meta.env.ALCHEMY_ID }),
+            publicProvider()
+        ]
+    );
+    
+    const { connectors } = getDefaultWallets({
+        appName: 'Rock Paper Scissors Game',
+        chains
+    });
+    
+    const wagmiClient = createClient({
+        autoConnect: true,
+        connectors,
+        provider
+    })
 
     const [myPick, setMyPick] = useState("");
     const [housePick, setHousePick] = useState("");
@@ -28,18 +54,19 @@ export default function App() {
 
     return (
          <Router>
-             <div className="wrapper">
-            <Header score={gameScore}/>
-            <Switch className="main">
-                <Route path="/play">
-                    <Play mine={myPick} house={housePick} score={gameScore} setScore={setGameScore} setHousePick={newHousePick}/>
-                </Route>
-                <Route path="/">
-                    <Home setPick={setMyPick} />
-                </Route>
-            </Switch>
-            <Footer />
-            </div>
+            <WagmiConfig client={wagmiClient}>
+            <RainbowKitProvider chains={chains}>
+                <div className="wrapper">
+                <Header score={gameScore}/>
+                <Switch className="main">
+                    <Route path="/">
+                        <Home setPick={setMyPick} />
+                    </Route>
+                </Switch>
+                <Footer />
+                </div>
+            </RainbowKitProvider>
+            </WagmiConfig>
         </Router>
     )
 }

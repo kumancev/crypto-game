@@ -22,6 +22,12 @@ header {
   }
 }
 
+.header__connect {
+  display: flex;
+  justify-content: center;
+  margin: 1.75em;
+}
+
 @media screen and (max-width: 550px) {
   header {
     padding: 20px;

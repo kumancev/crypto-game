@@ -1,0 +1,14 @@
+.playcrypto-wrapper {
+    button {
+      background-color: white;
+      text-decoration: none;
+      text-transform: uppercase;
+      padding: 10px 20px;
+      border-radius: $border-radius-title-button;
+      font-size: 0.8em;
+
+      &:hover {
+        color: red;
+      }
+    }
+}

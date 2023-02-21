@@ -1,19 +1,13 @@
 const hre = require("hardhat");
 
-// async function sleep(ms) {
-//   return new Promise((resolve) => {
-//     setTimeout(() => resolve, ms);
-//   });
-// }
-
 async function main() {
-  const initialAmount = hre.ethers.utils.parseEther("0.1");
+  const initialAmount = hre.ethers.utils.parseEther("0.6");
 
-  const CoinFlip = await hre.ethers.getContractFactory("CoinFlip");
-  const coinFlip = await CoinFlip.deploy({ value: initialAmount });
+  const RPSGame = await hre.ethers.getContractFactory("RPSGame");
+  const contract = await RPSGame.deploy({ value: initialAmount });
 
-  await coinFlip.deployed();
-  console.log(`CoinFlip contract deployed to ${coinFlip.address}`);
+  await contract.deployed();
+  console.log(`RPSGame contract deployed to ${contract.address}`);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
