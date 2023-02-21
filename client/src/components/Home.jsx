@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
 import { useAccount } from 'wagmi'
 import {RPSGameABI, RPSGameAddress} from "../abi/RPSGame";
@@ -7,7 +7,7 @@ import paperIcon from "../images/icon-paper.svg";
 import scissorsIcon from "../images/icon-scissors.svg";
 import rockIcon from "../images/icon-rock.svg";
 
-function Home() {
+export default function Home() {
     const [gameContract, setGameContract] = useState(null);
   const [playerChoice, setPlayerChoice] = useState(null);
 
@@ -78,5 +78,3 @@ function Home() {
         </div>
     )
 }
-
-export default Home;

@@ -3,7 +3,7 @@ import Modal from "./Modal";
 import imageRules from '../images/image-rules.svg';
 import closeIcon from "../images/x.svg"
 
-function Footer() {
+export default function Footer() {
 
     const [showModal, setShowModal] = useState(false);
 
@@ -34,5 +34,3 @@ function Footer() {
         </div>
     )
 }
-
-export default Footer;

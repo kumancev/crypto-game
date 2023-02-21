@@ -1,7 +1,6 @@
-import React from "react";
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 
-function Header() {
+export default function Header() {
     return (
         <div>
             <div className="header__connect">
@@ -15,5 +14,3 @@ function Header() {
         </div>
     )
 }
-
-export default Header;

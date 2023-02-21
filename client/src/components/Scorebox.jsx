@@ -1,6 +1,4 @@
-import React from "react";
-
-function Scorebox(props) {
+export default function Scorebox(props) {
     return (
         <div className="scorebox">
             <div className="scorebox__title">Score</div>
@@ -8,5 +6,3 @@ function Scorebox(props) {
         </div>
     )
 }
-
-export default Scorebox;

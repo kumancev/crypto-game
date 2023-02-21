@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 import '@rainbow-me/rainbowkit/styles.css';
 import {
   getDefaultWallets,
@@ -8,11 +7,6 @@ import { configureChains, createClient, WagmiConfig } from 'wagmi';
 import { bsc, bscTestnet } from 'wagmi/chains';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route
-  } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
@@ -42,18 +36,18 @@ export default function App() {
     const { address } = useAccount();
 
     return (
-            <WagmiConfig client={wagmiClient}>
-                <RainbowKitProvider chains={chains}>
-                    <div className="wrapper">
-                        <Header />
-                            {address 
-                                ? <Home  />
-                                : <h2>Connect your wallet before start game!</h2>
-                            }
-                        <Footer />
-                    </div>
-                </RainbowKitProvider>
-            </WagmiConfig>
+        <WagmiConfig client={wagmiClient}>
+            <RainbowKitProvider chains={chains}>
+                <div className="wrapper">
+                    <Header />
+                        {address 
+                            ? <Home  />
+                            : <h2>Connect your wallet before start game!</h2>
+                        }
+                    <Footer />
+                </div>
+            </RainbowKitProvider>
+        </WagmiConfig>
     )
 }
 
