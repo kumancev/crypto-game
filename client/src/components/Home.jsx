@@ -9,24 +9,29 @@ import rockIcon from "../images/icon-rock.svg";
 
 
 export default function Home() {
-  const provider = new ethers.providers.Web3Provider(window.ethereum);
-
   const [gameContract, setGameContract] = useState(null);
   const [playerChoice, setPlayerChoice] = useState(null);
 
   const { address } = useAccount();
 
   const [gameResults, setGameResults] = useState([]);
-
+  
   useEffect(() => {
     const fetchGameResults = async () => {
-      const signer = provider.getSigner();
-      const game = new ethers.Contract(RPSGameAddress, RPSGameABI, signer);
-
-      game.on('GameResult', (player, playerChoice, contractChoice, playerWon, event) => {
-        const newGameResult = { player, playerChoice, contractChoice, playerWon };
-        setGameResults(prevState => [...prevState, newGameResult]);
-      });
+      try {
+        if(!window.ethereum) return
+  
+        const provider = new ethers.providers.Web3Provider(window.ethereum)
+        const signer = provider.getSigner();
+        const game = new ethers.Contract(RPSGameAddress, RPSGameABI, signer);
+  
+        game.on('GameResult', (player, playerChoice, contractChoice, playerWon, event) => {
+          const newGameResult = { player, playerChoice, contractChoice, playerWon };
+          setGameResults(prevState => [...prevState, newGameResult]);
+        });
+      } catch (error) {
+        console.error(error);
+      }
     };
 
     fetchGameResults();
@@ -37,6 +42,9 @@ export default function Home() {
   useEffect(() => {
     async function connectToContract() {
       try {
+        if(!window.ethereum) return
+    
+        const provider = new ethers.providers.Web3Provider(window.ethereum)
         const signer = provider.getSigner();
         const game = new ethers.Contract(RPSGameAddress, RPSGameABI, signer);
         setGameContract(game);
