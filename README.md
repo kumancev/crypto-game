@@ -1,5 +1,5 @@
 # ROCK PAPER SCISSORS
-Blockchain game _(use bnb testnet)_
+Blockchain game _(use bnb testnet)_ [Online Demo](https://rps-game-sage.vercel.app/)
 
 ## Notes
 - Рандомный выбор реализовал простой хэш-функцией keccak256, тк оракулы не захотели работать, либо просто руки кривые (что скорее всего). Пробовал VRFConsumer от Chailink (V1 и V2) и с подпиской и с прямой оплатой и с оплатой со стороны юзера - не воркало (в оф чате не нашли проблему).
