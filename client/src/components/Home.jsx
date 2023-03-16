@@ -61,7 +61,7 @@ export default function Home() {
   async function playGame(choice) {
     try {
       const overrides = {
-        value: ethers.utils.parseEther('0.1')
+        value: ethers.utils.parseEther('0.1'),
       };
       const tx = await gameContract.play(choice, overrides);
       await tx.wait();
@@ -72,7 +72,7 @@ export default function Home() {
   }
     return (
         <div className="home">
-            <h2 >Price per game: 0.1 BNB</h2>
+            <h2>Price per game: 0.1 BNB</h2>
               {gameResults.length === 0 ? "" : gameResults.playerWon ? <h3>You win!</h3> : <h3>You lose!</h3>}
             <img className="triangle" src={bgTriangle}/>
                 <div data-id="paper" className="home__item home__paper" style={{backgroundImage: `url(${paperIcon})`}}>
